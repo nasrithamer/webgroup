@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  nt_nginx:
+    build: ./docker/nginx
+    restart: on-failure
+    container_name: nt_nginx
+    volumes:
+      - .:/var/www/html/
+      - ./docker/nginx/logs:/var/log/nginx/
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "2000:80"
+
+  nt_php:
+    build: ./docker/php
+    restart: on-failure
+    container_name: nt_php
+    volumes:
+      - .:/var/www/html/
+
+  nt_mysql:
+   image: mysql:5.7.39-debian
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: webgroup
+     MYSQL_USER: webgroup
+     MYSQL_PASSWORD: webgroup
+     MYSQL_DATABASE: webgroup
+
+  nt_phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "2010:80"
+    environment:
+      - PMA_HOST=nt_mysql
+      - PMA_PORT=3306
+      - MYSQL_ROOT_PASSWORD=webgroup
+      - PMA_USER=webgroup
+      - PMA_PASSWORD=webgroup
+    links:
+      - nt_mysql
+
+networks:
+  internal:
+    driver: bridge

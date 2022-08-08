@@ -1,0 +1,31 @@
+<section>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="{{ asset('build/images/hero.png') }}" alt="SpaceBlog" width="100%"/>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Nos articles</h1>
+        <div class="container">
+
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top"
+                                 src="{{ asset('uploads/'~article.cover) }}"
+                                 alt="Card image cap"/>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <a href="{{ path('app_article', {id:article.id, slug: article.slug}) }}">
+                                        {{ article.title }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #E4E6EC !important;
+}
+
+header {
+  color: #DC5E44 !important;
+  font-family: "Roboto Slab";
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
+footer {
+  height: 130px; /* Set the fixed height of the footer here */
+  background-color: #DC5E44;
+  padding: 20px 0;
+}
+
+footer img {
+  max-height: 100px;
+}
+
+section img {
+  background: #E4E6EC !important;
+}
+
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+section h1, a, .title{
+  font-family: "Roboto";
+  color: #DC5E44 !important;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+section h1 {
+  margin-top: 35px !important;
+  margin-bottom: 10px;
+}
+
+.btn_back {
+  color: white !important;
+  font-weight: bold !important;
+  margin-bottom: 10px !important;
+}
+
+@import '~bootstrap/scss/bootstrap';
